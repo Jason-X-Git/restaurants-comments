@@ -24,7 +24,7 @@ class RestaurantViewSet(viewsets.ModelViewSet):
     serializer_class = RestaurantSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     lookup_field = 'slug'
-    pagination_class = StandardResultsSetPagination
+    # pagination_class = StandardResultsSetPagination
 
 
 class CommentViewSet(viewsets.ModelViewSet):
