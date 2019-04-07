@@ -5,19 +5,19 @@ export default (state = restaurantsReducerDefaultState, action) => {
         case 'ADD_RESTAURANT':
             return [
                 ...state,
-                action.RESTAURANT
+                action.restaurant
             ];
         case 'REMOVE_RESTAURANT':
             return state.filter(({ id }) => id !== action.id);
         case 'EDIT_RESTAURANT':
-            return state.map((RESTAURANT) => {
-                if (RESTAURANT.id === action.id) {
+            return state.map((restaurant) => {
+                if (restaurant.id === action.id) {
                     return {
-                        ...RESTAURANT,
+                        ...restaurant,
                         ...action.updates
                     };
                 } else {
-                    return RESTAURANT;
+                    return restaurant;
                 };
             });
         case 'SET_RESTAURANTS':

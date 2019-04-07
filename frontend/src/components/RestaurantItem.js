@@ -4,7 +4,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 
 const RestaurantItem = ({ id, english_name, chinese_name, address, phone, introduction,
-  hours, comments }) => (
+  hours }) => (
     <Link className="list-item" to={`/edit/${id}`}>
     <div>
       <h2>{english_name}</h2>
@@ -13,13 +13,7 @@ const RestaurantItem = ({ id, english_name, chinese_name, address, phone, introd
       <p>{phone}</p>
       <p>{introduction}</p>
       <p>{hours}</p>
-      {comments.length > 0 ?
-        (<div>
-          <h3>{comments.length} Comments</h3>
-          {comments.map(comment => <p key={comment.url}>{comment.title}: {comment.content}</p>)}
-        </div>)
-        : <h3>No comments</h3>
-      }
+      
       <hr />
     </div>
   </Link>

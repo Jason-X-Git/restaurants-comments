@@ -17,7 +17,7 @@ export class EditRestaurantPage extends React.Component {
       <div>
         <div className="page-header">
           <div className="content-container">
-            <h1 className="page-header__title">Edit restaurant</h1>
+            <h1 className="page-header__title">Edit Page of {this.props.restaurant.english_name}</h1>
           </div>
         </div>
         <div className="content-container">
@@ -35,7 +35,7 @@ export class EditRestaurantPage extends React.Component {
 };
 
 const mapStateToProps = (state, props) => ({
-  restaurant: state.restaurants.find((restaurant) => restaurant.id === props.match.params.id)
+  restaurant: state.restaurants.find((restaurant) => restaurant.id === parseInt(props.match.params.id))
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
