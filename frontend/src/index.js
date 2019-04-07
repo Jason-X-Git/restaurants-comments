@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRouter, { history } from './routers/AppRouter';
+import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import {startSetRestaurants} from './actions/restaurants';
 import { Provider } from 'react-redux';
 import './App.css';
-import RestaurantsList from './components/RestaurantsList'
 
 const store = configureStore();
 
