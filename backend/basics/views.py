@@ -23,7 +23,8 @@ class RestaurantViewSet(viewsets.ModelViewSet):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    lookup_field = 'slug'
+    lookup_field = 'id'
+    # lookup_field = 'slug'
     # pagination_class = StandardResultsSetPagination
 
 
@@ -48,9 +49,10 @@ class CommentViewSet(viewsets.ModelViewSet):
     #     return super(CommentViewSet, self).dispatch(*args, **kwargs)
 
 
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
     """
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
