@@ -5,6 +5,7 @@ import RestaurantsDashboardPage from '../components/RestaurantsDashboardPage';
 import AddRestaurantPage from '../components/AddRestaurantPage';
 import EditRestaurantPage from '../components/EditRetaurantPage';
 import NotFoundPage from '../components/NotFoundPage';
+import Login from '../components/Login';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -14,7 +15,8 @@ const AppRouter = () => (
   <Router history={history}>
     <div> 
       <Switch>
-        <PublicRoute path="/" component={RestaurantsDashboardPage} exact={true} />
+        <PublicRoute path="/login" component={Login} exact={true}/>
+        <PrivateRoute path="/" component={RestaurantsDashboardPage} exact={true} />
         <PrivateRoute path="/create" component={AddRestaurantPage} />
         <PrivateRoute path="/edit/:id" component={EditRestaurantPage} />
         <Route component={NotFoundPage} />

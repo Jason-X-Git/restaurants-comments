@@ -16,13 +16,13 @@ export const PrivateRoute = ({
                 </div>
 
             ) : (
-                    <Redirect to="/" />
+                    <Redirect to="/login" />
                 )
         )} />
     );
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: !!state.auth.uid
+    isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

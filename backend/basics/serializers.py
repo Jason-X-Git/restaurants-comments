@@ -1,7 +1,25 @@
 from rest_framework import serializers
 from .models import *
-# from django.contrib.auth.models import User
-from users.models import CustomUser
+
+
+
+class CreateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = User.objects.create_user(validated_data['username'],
+                                        None,
+                                        validated_data['password'])
+        return user
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username')
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
@@ -40,13 +58,3 @@ class RestaurantSerializer(serializers.HyperlinkedModelSerializer):
         extra_kwargs = {
             'url': {'lookup_field': 'id'}
         }
-
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    # comments = serializers.HyperlinkedRelatedField(many=True, view_name='comment-detail',
-    #                                                read_only=True)
-    # comments = CommentSerializer(many=True)
-
-    class Meta:
-        model = CustomUser
-        fields = ('url', 'id', 'username', 'email')
