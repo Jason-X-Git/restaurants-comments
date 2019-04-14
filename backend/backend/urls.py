@@ -16,10 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from rest_framework_swagger.views import get_swagger_view
+from rest_framework.documentation import include_docs_urls
+
+schema_view = get_swagger_view(title='Restaurants API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path(r'', include('basics.urls')),
+    url(r'^api', include('basics.urls')),
+    url(r'^auth/', include('rest_auth.urls')),
+    url(r'^auth/register/', include('rest_auth.registration.urls')),
+    url(r'^swagger-docs/', schema_view),
+    url(r'^docs/', include_docs_urls(title='Restaurants API')),
 ]

@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from unidecode import unidecode
 from .geo_tools import *
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -47,7 +48,7 @@ class Comment(models.Model):
     restaurant = models.ForeignKey(Restaurant, related_name='comments',
                                    to_field='chinese_name', db_column='restaurant',
                                    on_delete=models.CASCADE)
-    owner = models.ForeignKey('users.CustomUser', related_name='comments',
+    owner = models.ForeignKey(User, related_name='comments',
                               to_field='username', db_column='user',
                               on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)

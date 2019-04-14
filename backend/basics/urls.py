@@ -53,5 +53,5 @@ router.register(r'comments', views.CommentViewSet)
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('schema/', schema_view),
-    path('api/', include(router.urls)),
+    path('/', include(router.urls)),
 ]
