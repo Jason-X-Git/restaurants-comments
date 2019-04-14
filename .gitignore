@@ -6,6 +6,7 @@ backend/py3_env/
 
 # frontend
 .vscode
+frontend/src/routers_OLD
 
 # dependencies
 frontend/node_modules

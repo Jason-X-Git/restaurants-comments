@@ -10,6 +10,11 @@ import RestaurantsDashboardPage from './components/RestaurantsDashboardPage';
 import NotFound from "./components/NotFoundPage";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import AddRestaurantPage from './components/AddRestaurantPage';
+import EditRestaurantPage from './components/EditRetaurantPage';
+import createHistory from 'history/createBrowserHistory';
+
+export const history = createHistory();
 
 const store = configureStore();
 
@@ -34,11 +39,13 @@ class RootContainerComponent extends Component {
     render() {
         let {PrivateRoute} = this;
         return (
-            <BrowserRouter>
+            <BrowserRouter history={history}>
                 <Switch>
                     <PrivateRoute exact path="/" component={RestaurantsDashboardPage} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/login" component={Login} />
+                    <PrivateRoute path="/create" component={AddRestaurantPage} />
+                    <PrivateRoute path="/edit/:id" component={EditRestaurantPage} />
                     <Route component={NotFound} />
                 </Switch>
             </BrowserRouter>

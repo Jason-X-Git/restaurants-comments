@@ -33,8 +33,7 @@ export const editRestaurant = (id, updates) => ({
 
 export const startEditRestaurant = (id, updates) => {
     return (dispatch, getState) => {
-    const uid = getState().auth.uid;
-    return axios.put(`http://localhost:8001/api/restaurants/${id}`, {...updates})
+    return axios.patch(`http://localhost:8001/api/restaurants/${id}`, {...updates})
         .then(() => {
             dispatch(editRestaurant(id, updates))
         })
