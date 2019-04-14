@@ -5,6 +5,7 @@ import { startEditRestaurant, startRemoveRestaurant } from '../actions/restauran
 
 export class EditRestaurantPage extends React.Component {
   onSubmit = (restaurant) => {
+    console.log('Editing ', restaurant)
     this.props.startEditRestaurant(this.props.restaurant.id, restaurant);
     this.props.history.push('/');
   };

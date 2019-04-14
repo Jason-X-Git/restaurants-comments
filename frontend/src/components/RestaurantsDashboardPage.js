@@ -4,6 +4,7 @@ import RestaurantsListFilters from './RestaurantsListFilters';
 import { connect } from "react-redux";
 import * as auth from '../actions/auth';
 import { startSetRestaurants } from '../actions/restaurants';
+import { Link } from "react-router-dom";
 
 class RestaurantsDashboardPage extends Component {
 
@@ -14,9 +15,14 @@ class RestaurantsDashboardPage extends Component {
   render() {
     return <div>
       <div>
-        <h2>{this.props.username}, Welcome to Your {this.props.total} Restaurants!</h2>
+        {this.props.username ?
+          <h2>{this.props.username}, Welcome to Your {this.props.total} Restaurants!</h2>
+          : <h2>Welcome to Restaurants Dashboard! ({this.props.total} )</h2>
+        }
         <div style={{ textAlign: "right" }}>
-          <button onClick={this.props.logout}>logout</button>
+          {this.props.username ?
+            <Link onClick={this.props.logout}>logout</Link>
+            : <Link to="/login">Login</Link>}
         </div>
         <hr />
         <div>

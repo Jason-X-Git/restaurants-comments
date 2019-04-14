@@ -38,7 +38,7 @@ export default function auth(state = initialState, action) {
 
         case 'LOGOUT_SUCCESSFUL':
             localStorage.removeItem("token");
-            localStorage.removeItem("ussername");
+            localStorage.removeItem("username");
             console.log('logout. token removed')
             return {
             

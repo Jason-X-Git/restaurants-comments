@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RestaurantItem from './RestaurantItem';
+import selectRestaurants from '../selectors/restaurants';
 
 export const RestaurantsList = (props) => (
     <div>
@@ -19,7 +20,7 @@ export const RestaurantsList = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        restaurants: state.restaurants
+        restaurants: selectRestaurants(state.restaurants, state.filters)
     };
 };
 

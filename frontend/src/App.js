@@ -41,7 +41,7 @@ class RootContainerComponent extends Component {
         return (
             <BrowserRouter history={history}>
                 <Switch>
-                    <PrivateRoute exact path="/" component={RestaurantsDashboardPage} />
+                    <Route exact path="/" component={RestaurantsDashboardPage} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/login" component={Login} />
                     <PrivateRoute path="/create" component={AddRestaurantPage} />
