@@ -14,7 +14,7 @@ class Login extends Component {
             password: props.password ? props.password : ''
         }
     }
-    
+
     componentWillUnmount() {
         this.props.onUnload();
     }
@@ -51,6 +51,8 @@ class Login extends Component {
             return <Redirect to="/" />
         }
         return (
+            <div className="content-container">
+            
             <form onSubmit={this.onSubmit}>
 
                 <fieldset>
@@ -84,6 +86,7 @@ class Login extends Component {
                     </p>
                 </fieldset>
             </form>
+            </div>
         )
     }
 }

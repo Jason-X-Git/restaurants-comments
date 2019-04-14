@@ -7,14 +7,13 @@ const RestaurantItem = ({ id, english_name, chinese_name, address, phone, introd
   hours }) => (
     <Link className="list-item" to={`/edit/${id}`}>
     <div>
-      <h2>{english_name}</h2>
-      <p>{chinese_name}</p>
-      <p>{address}</p>
-      <p>{phone}</p>
-      <p>{introduction}</p>
-      <p>{hours}</p>
+        <h2 className="list-item__title">{english_name}</h2>
+        <p className="list-item__sub-title">{chinese_name}</p>
+        <p className="list-item__data">{address}</p>
+        <p className="list-item__data">{phone}</p>
+        <p className="list-item__data">{introduction}</p>
+        <p className="list-item__data">{hours}</p>
       
-      <hr />
     </div>
   </Link>
 );

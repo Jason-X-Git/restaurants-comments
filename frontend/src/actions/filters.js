@@ -4,6 +4,11 @@ export const setIntroductionFilter = (introduction = '') => ({
   introduction
 });
 
+export const setEnglishNameFilter = (english_name = '') => ({
+  type: 'SET_ENGLISH_NAME_FILTER',
+  english_name
+});
+
 export const sortByChineseName = () => ({
   type: 'SORT_BY_CHINESE_NAME'
 });

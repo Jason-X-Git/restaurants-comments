@@ -2,6 +2,7 @@
 
 const filtersReducerDefaultState = {
   introduction: '',
+  english_name: '',
   sortBy: 'chinese_name'
 };
 
@@ -11,6 +12,11 @@ export default (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         introduction: action.introduction
+      };
+    case 'SET_ENGLISH_NAME_FILTER':
+      return {
+        ...state,
+        english_name: action.english_name
       };
     case 'SORT_BY_CHINESE_NAME':
       return {
