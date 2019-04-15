@@ -64,7 +64,76 @@ export const startEditRestaurant = (id, updates) => {
     }
 };
 
-export const startRemoveRestaurant = () => {
-    ''
-};
+export const removeRestaurant = (id) => ({
+    type: 'REMOVE_RESTAURANT',
+    id
+});
 
+export const startRemoveRestaurant = (id) => {
+    return (dispatch, getState) => {
+        let headers = { "Content-Type": "application/json" };
+        let { token } = getState().auth;
+
+        if (token) {
+            headers["Authorization"] = `Token ${token}`;
+        }
+        return fetch(`http://localhost:8001/api/restaurants/${id}/`, { headers, method: "DELETE" })
+            .then(res => {
+                console.log('api deleting', res.status, res.data)
+                if (res.status === 204) {
+                    return { status: res.status, data: {} };
+                } 
+                else {
+                    console.log("Server Error!");
+                    throw res;
+                }
+            })
+            .then(res => {
+                if (res.status === 204) {
+                    return dispatch(removeRestaurant(id));
+                } else if (res.status === 401 || res.status === 403) {
+                    dispatch({ type: "AUTHENTICATION_ERROR", data: res.data });
+                    throw res.data;
+                }
+            })
+    }
+}
+
+export const addRestaurant = (restaurant) => ({
+    type: 'ADD_RESTAURANT',
+    restaurant
+});
+
+export const startAddRestaurant = (restaurant) => {
+    return (dispatch, getState) => {
+
+        let headers = { "Content-Type": "application/json" };
+        let { token } = getState().auth;
+
+        if (token) {
+            headers["Authorization"] = `Token ${token}`;
+        }
+        let body = JSON.stringify({ ...restaurant });
+
+        return fetch("http://localhost:8001/api/restaurants/", { headers, method: "POST", body })
+            .then(res => {
+                if (res.status < 500) {
+                    return res.json().then(data => {
+                        return { status: res.status, data };
+                    })
+                } else {
+                    console.log("Server Error!");
+                    throw res;
+                }
+            })
+            .then(res => {
+                if (res.status === 201) {
+                    return dispatch(addRestaurant(restaurant));
+                } else if (res.status === 401 || res.status === 403) {
+                    dispatch({ type: "AUTHENTICATION_ERROR", data: res.data });
+                    throw res.data;
+                }
+            })
+
+    }
+}

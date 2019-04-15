@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RestaurantForm from './ResaurantForm'
+import RestaurantForm from './RestaurantForm'
 import { startEditRestaurant, startRemoveRestaurant } from '../actions/restaurants';
 
 export class EditRestaurantPage extends React.Component {
@@ -10,7 +10,8 @@ export class EditRestaurantPage extends React.Component {
     this.props.history.push('/');
   };
   onRemove = () => {
-    this.props.startRemoveRestaurant({ id: this.props.restaurant.id });
+    console.log('Clikcing remove ', this.props.restaurant.id)
+    this.props.startRemoveRestaurant(this.props.restaurant.id);
     this.props.history.push('/');
   };
   render() {
@@ -41,7 +42,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   startEditRestaurant: (id, restaurant) => dispatch(startEditRestaurant(id, restaurant)),
-  startRemoveRestaurant: (data) => dispatch(startRemoveRestaurant(data))
+  startRemoveRestaurant: (id) => dispatch(startRemoveRestaurant(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditRestaurantPage);

@@ -17,7 +17,7 @@ class RestaurantsDashboardPage extends Component {
         <header className="header">
         <div className="content-container">
           <div className="header__content">
-            <Link className="header__title">
+            <Link className="header__title" to="/">
               {this.props.username ?
                 <h2>{this.props.username}, Welcome to Your {this.props.total} Restaurants!</h2>
                 : <h2>Welcome to Restaurants Dashboard! ({this.props.total} )</h2>

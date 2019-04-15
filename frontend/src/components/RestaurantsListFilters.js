@@ -47,8 +47,8 @@ export class RestaurantsListFilters extends React.Component {
               value={this.props.filters.sortBy}
               onChange={this.onSortChange}
             >
-              <option value="chinese_name">Chinese Name</option>
-              <option value="english_name">English Name</option>
+              <option value="chinese_name">Sort by Chinese Name</option>
+              <option value="english_name">Sort by English Name</option>
             </select>
           </div>
 
