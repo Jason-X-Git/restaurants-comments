@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import configureStore from './store/configureStore';
 
 import { Provider, connect } from "react-redux";
 import * as auth from './actions/auth';
 
 import RestaurantsDashboardPage from './components/RestaurantsDashboardPage';
+import Header from './components/Header';
 
 import NotFound from "./components/NotFoundPage";
 import Register from "./components/Register";
@@ -24,7 +25,7 @@ class RootContainerComponent extends Component {
     //     this.props.loadUser();
     // }
 
-    PrivateRoute = ({component: ChildComponent, ...rest}) => {
+    PrivateRoute = ({ component: ChildComponent, ...rest }) => {
         return <Route {...rest} render={props => {
             if (this.props.username) {
                 return <em>Loading...</em>;
@@ -37,9 +38,10 @@ class RootContainerComponent extends Component {
     }
 
     render() {
-        let {PrivateRoute} = this;
+        let { PrivateRoute } = this;
         return (
             <BrowserRouter history={history}>
+                <Header />
                 <Switch>
                     <Route exact path="/" component={RestaurantsDashboardPage} />
                     <Route exact path="/register" component={Register} />

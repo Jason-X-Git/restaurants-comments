@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as auth from '../actions/auth';
 
-export const Header = ({ startLogout }) => (
+export const Header = (props) => (
   <header className="header">
     <div className="content-container">
-    <div className="header__content">
-      <Link className="header__title" to="/">
-        <h1>Restaurants</h1>
-      </Link>
-      <button className="button button--link" onClick={startLogout}>Logout</button>
-      </div>
+      <div className="header__content">
+        <Link className="header__title" to="/">
+          {props.username ?
+            <h2>{props.username}, Welcome to Your {props.total} Restaurants!</h2>
+            : <h2>Welcome to Restaurants Dashboard! ({props.total} )</h2>
+          }</Link>
+        <div style={{ textAlign: "right" }}>
+          {props.username ?
+            <Link className="button button--link" onClick={props.logout}>logout</Link>
+            : <Link className="button button--link" to="/login">Login</Link>}
+        </div></div>
     </div>
   </header>
 );
 
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    username: state.auth.username,
+    total: state.restaurants.length
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(auth.logout()),
+    login: () => dispatch(auth.login()),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
