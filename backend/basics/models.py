@@ -9,8 +9,8 @@ from django.contrib.auth.models import User
 
 class Restaurant(models.Model):
     id = models.AutoField(primary_key=True)
-    english_name = models.CharField(max_length=255, blank=True, null=True)
-    chinese_name = models.CharField(max_length=255, unique=True)
+    english_name = models.CharField(max_length=255, blank=False, null=False)
+    chinese_name = models.CharField(max_length=255, unique=True, blank=False, null=False)
     address = models.CharField(max_length=255, blank=True, null=True)
     web_site = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=255, blank=True, null=True)
@@ -26,11 +26,15 @@ class Restaurant(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(unidecode(self.chinese_name))
         try:
-            long, lat = get_lonlat(self.address)
-            if long != self.longitude:
-                self.longitude = long
-            if lat != self.latitude:
-                self.latitude = lat
+            try:
+                long, lat = get_lonlat(self.address)
+                if long != self.longitude:
+                    self.longitude = long
+                if lat != self.latitude:
+                    self.latitude = lat
+            except:
+                self.longitude = None
+                self.latitude = None
         except:
             pass
         super(Restaurant, self).save(*args, **kwargs)

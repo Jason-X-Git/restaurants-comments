@@ -1,7 +1,9 @@
 export default (restaurants, { english_name, introduction, sortBy }) => {
     return restaurants.filter((restaurant) => {
-        const englishNameMatch = restaurant.english_name.toLowerCase().includes(english_name.toLowerCase());
-        const introductionMatch = restaurant.introduction.toLowerCase().includes(introduction.toLowerCase());
+        const englishNameParsed = restaurant.english_name ? restaurant.english_name.toLowerCase():''
+        const introductionParsed = restaurant.introduction ? restaurant.introduction.toLowerCase():''
+        const englishNameMatch = englishNameParsed.includes(english_name.toLowerCase());
+        const introductionMatch = introductionParsed.includes(introduction.toLowerCase());
 
         return englishNameMatch && introductionMatch;
     }).sort((a, b) => {

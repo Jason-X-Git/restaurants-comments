@@ -87,7 +87,7 @@ export default class RestaurantForm extends React.Component {
           placeholder="Phone"
           className="text-input"
           value={this.state.phone}
-          onChange={this.onChineseNameChange}
+          onChange={this.onPhoneChange}
         />
         <textarea
           placeholder="Introduction"
