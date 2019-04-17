@@ -42,8 +42,8 @@ export default class RestaurantForm extends React.Component {
     e.preventDefault();
     console.log('Submiting ', this.state)
 
-    if (!this.state.english_name || !this.state.chinese_name || !this.state.address) {
-      this.setState(() => ({ error: 'Please provide names and address.' }));
+    if (!this.state.english_name || !this.state.chinese_name) {
+      this.setState(() => ({ error: 'Please provide names.' }));
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({

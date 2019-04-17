@@ -54,7 +54,7 @@ class RestaurantSerializer(serializers.HyperlinkedModelSerializer):
                   'web_site', 'phone', 'introduction', 'hours',
                   'longitude', 'latitude',
                   'city', 'quadrant')
-        lookup_field = 'slug'
+        # lookup_field = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'id'}
         }

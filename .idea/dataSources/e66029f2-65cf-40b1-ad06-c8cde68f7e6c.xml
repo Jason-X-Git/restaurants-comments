@@ -140,8 +140,8 @@
     <schema id="32" parent="7" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2019-04-13.21:49:49.831</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1266</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-04-16.19:27:50.972</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1872</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -3913,7 +3913,8 @@ model</ColNames>
     <column id="624" parent="117" name="english_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1260</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>1870</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="625" parent="117" name="chinese_name">
@@ -3926,7 +3927,7 @@ model</ColNames>
     <column id="626" parent="117" name="address">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1260</StateNumber>
+      <StateNumber>1872</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="627" parent="117" name="web_site">
@@ -3938,19 +3939,19 @@ model</ColNames>
     <column id="628" parent="117" name="phone">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1260</StateNumber>
+      <StateNumber>1872</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="629" parent="117" name="introduction">
       <Position>7</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1260</StateNumber>
+      <StateNumber>1872</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="630" parent="117" name="hours">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1260</StateNumber>
+      <StateNumber>1872</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="631" parent="117" name="longitude">
@@ -3968,7 +3969,7 @@ model</ColNames>
     <column id="633" parent="117" name="city">
       <Position>11</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1260</StateNumber>
+      <StateNumber>1872</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="634" parent="117" name="quadrant">
