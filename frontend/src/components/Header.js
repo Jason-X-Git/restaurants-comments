@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as auth from '../actions/auth';
+import selectRestaurants from '../selectors/restaurants';
 
 export const Header = (props) => (
   <header className="header">
@@ -25,7 +26,7 @@ export const Header = (props) => (
 const mapStateToProps = state => {
   return {
     username: state.auth.username,
-    total: state.restaurants.length
+    total: selectRestaurants(state.restaurants, state.filters).length
   }
 }
 
