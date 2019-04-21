@@ -17,3 +17,7 @@ Clone it
 * cd restaurants-comments/frontend
 * yarn install
 * yarn start
+
+## TODO List
+* Add comments on the side of restaurant
+* Search any comments
