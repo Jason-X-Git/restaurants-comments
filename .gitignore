@@ -2,6 +2,7 @@
 
 #backend
 backend/.idea/
+backend/.env
 backend/py3_env/
 
 # frontend
